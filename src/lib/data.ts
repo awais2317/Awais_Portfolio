@@ -18,7 +18,7 @@ export const siteConfig = {
     linkedin: "https://www.linkedin.com/in/awais-waqar-396504211",
     upwork:
       "https://www.upwork.com/freelancers/~010671e8415708a70c?mp_source=share",
-    github: "https://github.com/awaiswaqar",
+    github: "https://github.com/awais2317",
   },
 };
 

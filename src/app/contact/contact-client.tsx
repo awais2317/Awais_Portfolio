@@ -150,20 +150,20 @@ export function ContactPage() {
             {/* Social Links */}
             <div>
               <h3 className="font-semibold mb-4">Connect Online</h3>
-              <StaggerContainer className="grid grid-cols-3 gap-4">
+              <StaggerContainer className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
                 {socialLinks.map((link) => (
                   <StaggerItem key={link.label}>
                     <a
                       href={link.href}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="block"
+                      className="block group"
                     >
-                      <Card className="border-border/50 bg-card/50 backdrop-blur-sm hover:border-primary/30 hover:bg-accent/50 transition-all duration-300">
-                        <CardContent className="p-4 text-center">
-                          <link.icon className="h-6 w-6 mx-auto mb-2 text-primary" />
-                          <div className="font-medium text-sm">{link.label}</div>
-                          <div className="text-xs text-muted-foreground mt-1">
+                      <Card className="border-border/50 bg-card/50 backdrop-blur-sm hover:border-primary/30 hover:bg-accent/50 transition-all duration-300 h-full">
+                        <CardContent className="p-6 text-center flex flex-col items-center justify-center min-h-[140px]">
+                          <link.icon className="h-7 w-7 mb-3 text-primary group-hover:scale-110 transition-transform" />
+                          <div className="font-medium text-base mb-1">{link.label}</div>
+                          <div className="text-xs text-muted-foreground">
                             {link.description}
                           </div>
                         </CardContent>

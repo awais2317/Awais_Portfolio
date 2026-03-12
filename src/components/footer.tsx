@@ -103,7 +103,7 @@ export function Footer() {
             © {currentYear} {siteConfig.name}. All rights reserved.
           </p>
           <p className="text-sm text-muted-foreground">
-            Built with Next.js, Tailwind CSS & shadcn/ui
+            AI Engineer · Building Intelligent Systems
           </p>
         </div>
       </div>

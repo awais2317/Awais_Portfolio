@@ -1,0 +1,33 @@
+﻿<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630" width="1200" height="630">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#051225"/>
+      <stop offset="100%" stop-color="#0a1d33"/>
+    </linearGradient>
+    <linearGradient id="band" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#0ea5e9"/>
+      <stop offset="100%" stop-color="#10b981"/>
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="630" fill="url(#bg)"/>
+  <rect x="0" y="0" width="1200" height="6" fill="url(#band)"/>
+  <rect x="0" y="624" width="1200" height="6" fill="url(#band)"/>
+
+  <circle cx="145" cy="116" r="30" fill="#0ea5e9" fill-opacity="0.22"/>
+  <rect x="132" y="98" width="26" height="36" rx="4" fill="#0ea5e9" fill-opacity="0.85"/>
+  <rect x="126" y="104" width="38" height="24" rx="4" fill="#0ea5e9" fill-opacity="0.85"/>
+
+  <rect x="185" y="92" width="120" height="28" rx="14" fill="#0ea5e9" fill-opacity="0.18"/>
+  <text x="245" y="111" text-anchor="middle" font-family="Segoe UI, Arial, sans-serif" font-size="12" fill="#7dd3fc" font-weight="700">HEALTHCARE AI</text>
+
+  <text x="80" y="180" font-family="Segoe UI, Arial, sans-serif" font-size="54" fill="#e2e8f0" font-weight="800">AI Healthcare Automation Platform</text>
+  <text x="80" y="220" font-family="Segoe UI, Arial, sans-serif" font-size="28" fill="#94a3b8">Enterprise-Scale Claims Processing</text>
+
+  <rect x="80" y="264" width="1040" height="220" rx="18" fill="#0d243f" fill-opacity="0.7" stroke="#1e3a5f"/>
+  <text x="120" y="320" font-family="Segoe UI, Arial, sans-serif" font-size="30" fill="#dbeafe" font-weight="700">Built for real-world healthcare workflows</text>
+  <text x="120" y="362" font-family="Segoe UI, Arial, sans-serif" font-size="24" fill="#9fb6cf">LLM-assisted claims processing with secure API integration</text>
+  <text x="120" y="402" font-family="Segoe UI, Arial, sans-serif" font-size="24" fill="#9fb6cf">Clinical documentation support and robust compliance validation</text>
+  <text x="120" y="442" font-family="Segoe UI, Arial, sans-serif" font-size="24" fill="#9fb6cf">Production-ready architecture focused on reliability and scale</text>
+
+  <text x="1120" y="586" text-anchor="end" font-family="Segoe UI, Arial, sans-serif" font-size="18" fill="#7da0c1">Awais Waqar  -  CareCloud Project</text>
+</svg>

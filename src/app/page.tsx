@@ -83,7 +83,7 @@ export default function HomePage() {
                   </Link>
                 </Button>
                 <Button variant="outline" size="lg" asChild>
-                  <a href="/AWAIS WAQAR RESUME.pdf" download>
+                  <a href="/AWAIS WAQAR  AI Engineer.pdf" download="AWAIS WAQAR  AI Engineer.pdf">
                     <Download className="mr-2 h-4 w-4" />
                     Download Resume
                   </a>

@@ -59,7 +59,7 @@ export function ExperiencePage() {
             </p>
             <div className="flex flex-wrap justify-center gap-4">
               <Button asChild size="lg">
-                <a href="/resume.pdf" download>
+                <a href="/AWAIS WAQAR  AI Engineer.pdf" download="AWAIS WAQAR  AI Engineer.pdf">
                   <Download className="mr-2 h-4 w-4" />
                   Download Resume
                 </a>

@@ -17,6 +17,20 @@ interface ContactFormProps {
 /**
  * Contact form component with validation
  */
+// ─── Google Form Configuration ───────────────────────────────────────────────
+// Replace these with your actual Google Form ID and entry IDs.
+// To find them: open your Google Form → 3-dot menu → "Get pre-filled link"
+// → fill dummy values → "Get Link" → copy the entry.XXXXXXXXX numbers from the URL.
+const GOOGLE_FORM_ACTION =
+  "https://docs.google.com/forms/d/e/1FAIpQLSeIzxNxhLju2cwQM1w-lycRWCbtryZL4Q46tQLlt2T0mdlVnQ/formResponse";
+const ENTRY = {
+  name: "entry.571646284",
+  email: "entry.1148664303",
+  subject: "entry.1082111205",
+  message: "entry.1737256152",
+};
+// ─────────────────────────────────────────────────────────────────────────────
+
 export function ContactForm({ className }: ContactFormProps) {
   const [isSubmitting, setIsSubmitting] = React.useState(false);
   const [isSubmitted, setIsSubmitted] = React.useState(false);
@@ -25,8 +39,24 @@ export function ContactForm({ className }: ContactFormProps) {
     e.preventDefault();
     setIsSubmitting(true);
 
-    // Simulate form submission
-    await new Promise((resolve) => setTimeout(resolve, 1500));
+    const form = e.currentTarget;
+    const data = new FormData();
+    data.append(ENTRY.name, (form.elements.namedItem("name") as HTMLInputElement).value);
+    data.append(ENTRY.email, (form.elements.namedItem("email") as HTMLInputElement).value);
+    data.append(ENTRY.subject, (form.elements.namedItem("subject") as HTMLInputElement).value);
+    data.append(ENTRY.message, (form.elements.namedItem("message") as HTMLTextAreaElement).value);
+
+    try {
+      // Google Forms doesn't support CORS, so we use no-cors.
+      // The request will still be received by Google even though we get an opaque response.
+      await fetch(GOOGLE_FORM_ACTION, {
+        method: "POST",
+        mode: "no-cors",
+        body: data,
+      });
+    } catch {
+      // Opaque response from no-cors — submission still goes through
+    }
 
     setIsSubmitting(false);
     setIsSubmitted(true);

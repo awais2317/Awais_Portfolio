@@ -23,6 +23,8 @@ interface ContactFormProps {
 // → fill dummy values → "Get Link" → copy the entry.XXXXXXXXX numbers from the URL.
 const GOOGLE_FORM_ACTION =
   "https://docs.google.com/forms/d/e/1FAIpQLSeIzxNxhLju2cwQM1w-lycRWCbtryZL4Q46tQLlt2T0mdlVnQ/formResponse";
+const GOOGLE_FORM_VIEW =
+  "https://docs.google.com/forms/d/e/1FAIpQLSeIzxNxhLju2cwQM1w-lycRWCbtryZL4Q46tQLlt2T0mdlVnQ/viewform";
 const ENTRY = {
   name: "entry.571646284",
   email: "entry.1148664303",
@@ -40,11 +42,18 @@ export function ContactForm({ className }: ContactFormProps) {
     setIsSubmitting(true);
 
     const form = e.currentTarget;
-    const data = new FormData();
-    data.append(ENTRY.name, (form.elements.namedItem("name") as HTMLInputElement).value);
-    data.append(ENTRY.email, (form.elements.namedItem("email") as HTMLInputElement).value);
-    data.append(ENTRY.subject, (form.elements.namedItem("subject") as HTMLInputElement).value);
-    data.append(ENTRY.message, (form.elements.namedItem("message") as HTMLTextAreaElement).value);
+    const values = {
+      name: (form.elements.namedItem("name") as HTMLInputElement).value,
+      email: (form.elements.namedItem("email") as HTMLInputElement).value,
+      subject: (form.elements.namedItem("subject") as HTMLInputElement).value,
+      message: (form.elements.namedItem("message") as HTMLTextAreaElement).value,
+    };
+
+    const params = new URLSearchParams();
+    params.set(ENTRY.name, values.name);
+    params.set(ENTRY.email, values.email);
+    params.set(ENTRY.subject, values.subject);
+    params.set(ENTRY.message, values.message);
 
     try {
       // Google Forms doesn't support CORS, so we use no-cors.
@@ -52,10 +61,15 @@ export function ContactForm({ className }: ContactFormProps) {
       await fetch(GOOGLE_FORM_ACTION, {
         method: "POST",
         mode: "no-cors",
-        body: data,
+        headers: {
+          "Content-Type": "application/x-www-form-urlencoded;charset=UTF-8",
+        },
+        body: params.toString(),
       });
     } catch {
-      // Opaque response from no-cors — submission still goes through
+      // If fetch is blocked by browser policies/extensions, open the prefilled Google Form as fallback.
+      const fallbackUrl = `${GOOGLE_FORM_VIEW}?usp=pp_url&${params.toString()}`;
+      window.open(fallbackUrl, "_blank", "noopener,noreferrer");
     }
 
     setIsSubmitting(false);
